@@ -1,0 +1,46 @@
+echo
+echo "=================================="
+echo "Report Generated Successfully!"
+echo "Report File : $REPORT"
+
+cat > "$HTML_REPORT" <<EOF
+<html>
+<head>
+<title>Log Analysis Report</title>
+</head>
+<body>
+
+<h1>Log Analysis Report</h1>
+
+<p><b>File:</b> $LOGFILE</p>
+
+<p><b>Total Requests:</b> $TOTAL</p>
+
+EOF
+
+echo "<h2>Top 10 IP Addresses</h2><pre>" >> "$HTML_REPORT"
+awk '{print $1}' "$LOGFILE" | sort | uniq -c | sort -rn | head -10 >> "$HTML_REPORT"
+echo "</pre>" >> "$HTML_REPORT"
+
+echo "<h2>Top Requested URLs</h2><pre>" >> "$HTML_REPORT"
+awk '{print $7}' "$LOGFILE" | sort | uniq -c | sort -rn | head -10 >> "$HTML_REPORT"
+echo "</pre>" >> "$HTML_REPORT"
+
+echo "<h2>Status Code Distribution</h2><pre>" >> "$HTML_REPORT"
+awk '{print $9}' "$LOGFILE" | sort | uniq -c >> "$HTML_REPORT"
+echo "</pre>" >> "$HTML_REPORT"
+
+echo "<h2>Error Rate</h2>" >> "$HTML_REPORT"
+echo "<p>Total Errors: $ERRORS</p>" >> "$HTML_REPORT"
+echo "<p>Error Rate: $ERROR_RATE%</p>" >> "$HTML_REPORT"
+
+echo "<h2>Requests Per Hour</h2><pre>" >> "$HTML_REPORT"
+awk '{print substr($4,2,14)}' "$LOGFILE" | sort | uniq -c >> "$HTML_REPORT"
+echo "</pre>" >> "$HTML_REPORT"
+
+cat >> "$HTML_REPORT" <<EOF
+</body>
+</html>
+EOF
+
+echo "HTML Report Generated: $HTML_REPORT"
