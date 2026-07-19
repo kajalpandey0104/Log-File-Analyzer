@@ -1,0 +1,381 @@
+# 📋 Log File Analyzer - Interview Notes
+
+# 1. Project Introduction
+
+## Q1. Project Name?
+
+**Answer:**
+
+Log File Analyzer using Bash Shell Scripting
+
+---
+
+## Q2. What is this project?
+
+**Answer:**
+
+This project is a Bash Shell Scripting application that analyzes Apache/Nginx access log files. It extracts useful information such as total requests, top client IP addresses, requested URLs, HTTP status code distribution, error rate, requests per hour, and generates reports in both text and HTML format.
+
+---
+
+## Q3. Why did you build this project?
+
+**Answer:**
+
+I built this project to improve my Linux Shell Scripting skills and understand how web server logs are analyzed. It helped me learn text processing using Bash commands like awk, grep, sort, uniq, wc, and date.
+
+---
+
+## Q4. What is the use of this project?
+
+**Answer:**
+
+This project is useful for:
+
+* Monitoring web server traffic
+* Finding the most active users
+* Detecting frequently accessed pages
+* Identifying HTTP errors
+* Understanding server usage trends
+* Creating reports for system administrators
+
+---
+
+# 2. Project Flow
+
+## Q5. Explain your project step by step.
+
+**Answer:**
+
+1. User provides a log file.
+2. Script checks whether the file exists.
+3. Counts total requests.
+4. Extracts top IP addresses.
+5. Extracts top requested URLs.
+6. Calculates HTTP status code distribution.
+7. Calculates error rate.
+8. Groups requests by hour.
+9. Generates a text report.
+10. Generates an HTML report.
+
+---
+
+# 3. Technologies Used
+
+## Q6. Which technologies did you use?
+
+**Answer:**
+
+* Bash Shell
+* Linux
+* awk
+* grep
+* sort
+* uniq
+* head
+* wc
+* date
+
+---
+
+## Q7. Why Bash?
+
+**Answer:**
+
+Bash is lightweight, available on almost every Linux system, and is well suited for automation and text processing.
+
+---
+
+# 4. Log File
+
+## Q8. What is a log file?
+
+**Answer:**
+
+A log file stores records of server activities such as requests, errors, client IP addresses, timestamps, URLs, and HTTP response codes.
+
+---
+
+## Q9. Which log format did you use?
+
+**Answer:**
+
+Apache/Nginx Combined Log Format.
+
+Example:
+
+192.168.1.10 - - [02/Jul/2026:10:20:30 +0000] "GET /index.html HTTP/1.1" 200 1543
+
+---
+
+# 5. Features
+
+## Q10. What features does your project provide?
+
+**Answer:**
+
+* File validation
+* Total Requests
+* Top 10 IP Addresses
+* Top Requested URLs
+* HTTP Status Distribution
+* Error Rate
+* Requests Per Hour
+* Text Report
+* HTML Report
+
+---
+
+# 6. Bash Commands Used
+
+## Q11. Why did you use awk?
+
+**Answer:**
+
+awk is used to extract specific columns from the log file and perform calculations.
+
+Example:
+
+awk '{print $1}'
+
+Extracts IP addresses.
+
+---
+
+## Q12. Why grep?
+
+**Answer:**
+
+grep searches and filters data.
+
+Example:
+
+grep -c
+
+Counts matching lines.
+
+---
+
+## Q13. Why sort?
+
+**Answer:**
+
+To arrange data in ascending or descending order.
+
+---
+
+## Q14. Why uniq?
+
+**Answer:**
+
+To count duplicate values after sorting.
+
+---
+
+## Q15. Why wc?
+
+**Answer:**
+
+To count the total number of lines (requests).
+
+---
+
+## Q16. Why head?
+
+**Answer:**
+
+To display only the top 10 results.
+
+---
+
+# 7. Logic Questions
+
+## Q17. How did you find Top IPs?
+
+**Answer:**
+
+1. Extract first column.
+2. Sort.
+3. Count duplicates.
+4. Sort by count.
+5. Display top 10.
+
+---
+
+## Q18. How did you calculate Error Rate?
+
+**Answer:**
+
+Errors include all HTTP status codes from 400 to 599.
+
+Formula:
+
+Error Rate = (Errors / Total Requests) × 100
+
+---
+
+## Q19. How did you calculate Requests Per Hour?
+
+**Answer:**
+
+The script extracts the hour from the timestamp, sorts it, and counts requests for each hour.
+
+---
+
+# 8. Reports
+
+## Q20. Why generate reports?
+
+**Answer:**
+
+Reports make it easy to share analysis with administrators and stakeholders.
+
+---
+
+## Q21. Why HTML report?
+
+**Answer:**
+
+HTML reports are easier to read in a web browser and provide better presentation.
+
+---
+
+# 9. Challenges
+
+## Q22. What challenges did you face?
+
+**Answer:**
+
+* Understanding awk syntax
+* Parsing log file fields correctly
+* Calculating percentages in Bash
+* Formatting reports
+
+---
+
+## Q23. How did you solve them?
+
+**Answer:**
+
+I tested each command individually and then combined them into the final script.
+
+---
+
+# 10. Improvements
+
+## Q24. What improvements can be added?
+
+**Answer:**
+
+* Live monitoring
+* Gzip support
+* DDoS detection
+* Email reports
+* Charts
+* Dashboard
+
+---
+
+# 11. Real-Time Questions
+
+## Q25. Why not use Python?
+
+**Answer:**
+
+The project requirement was to use only Bash and Linux commands. Bash is also fast for log parsing tasks.
+
+---
+
+## Q26. Can this work with large log files?
+
+**Answer:**
+
+Yes. Standard Linux tools such as awk, grep, sort, and uniq are designed to process large text files efficiently.
+
+---
+
+## Q27. What happens if the file doesn't exist?
+
+**Answer:**
+
+The script displays "File not found" and exits safely.
+
+---
+
+## Q28. What happens if the log file is empty?
+
+**Answer:**
+
+The script handles the condition gracefully and produces an empty or zero-count report instead of crashing.
+
+---
+
+## Q29. What HTTP status codes are considered errors?
+
+**Answer:**
+
+* 4xx → Client Errors
+* 5xx → Server Errors
+
+---
+
+## Q30. Difference between 200, 301, 302, 404 and 500?
+
+**Answer:**
+
+* 200 → OK (Request successful)
+* 301 → Permanent Redirect
+* 302 → Temporary Redirect
+* 404 → Page Not Found
+* 500 → Internal Server Error
+
+---
+
+# 12. HR Questions
+
+## Q31. Explain your project in one minute.
+
+**Answer:**
+
+I developed a Log File Analyzer using Bash Shell Scripting. The script accepts an Apache or Nginx access log file, validates it, extracts useful information like total requests, top IP addresses, requested URLs, HTTP status distribution, error rate, and hourly request trends. It then generates both text and HTML reports using Linux utilities such as awk, grep, sort, and uniq. This project improved my Linux, Shell Scripting, and log analysis skills.
+
+---
+
+## Q32. What did you learn?
+
+**Answer:**
+
+* Bash scripting
+* Linux commands
+* Text processing
+* Log analysis
+* Report generation
+* File handling
+* Command-line automation
+
+---
+
+# Quick Revision
+
+✔ Project Type: Linux Shell Scripting
+
+✔ Domain: Log Analysis
+
+✔ Language: Bash
+
+✔ Tools: awk, grep, sort, uniq, wc, head, date
+
+✔ Input: Apache/Nginx Access Log
+
+✔ Output: Text Report + HTML Report
+
+✔ Main Features:
+
+* File Validation
+* Total Requests
+* Top IPs
+* Top URLs
+* Status Codes
+* Error Rate
+* Requests Per Hour
+* Report Generation
