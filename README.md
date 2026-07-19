@@ -278,31 +278,6 @@ Open in any browser.
 - Interactive Dashboard
 
 ---
-
-# 📸 Project Screenshots
-
-## Terminal Output
-
-> Add a screenshot here
-
-Example:
-
-```
-images/terminal-output.png
-```
-
----
-
-## HTML Report
-
-> Add a screenshot here
-
-Example:
-
-```
-images/report-html.png
-```
-
 ---
 
 # 🎯 Learning Outcomes
